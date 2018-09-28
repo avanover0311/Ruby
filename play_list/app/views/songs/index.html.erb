@@ -1,0 +1,65 @@
+<h1>Welcome, <%= @user.first_name %> <%= @user.last_name %></h1>
+
+
+
+<div class="container">	
+  <h3>All the song in our hub:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Artist</th>
+      <th scope="col">Title</th>
+      <th scope="col">No. of times song has been added</th>
+      <th scope="col">Action/ Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @songs.each do |s| %>
+    <tr>
+      <td><%= s.artist%></td>
+      <td><a href="songs/<%= s.id %>"><%= s.title %></a></td>
+      <td>
+        <%= Listen.where(song_id: s.id).count %>
+
+      <td>
+
+  	  <td>
+        <form action="songs/<%= s.id %>/listens" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <button type ="submit">Add</button>
+        </form> 
+      </td>      
+    </tr> 
+
+    <% end %>
+         
+  </tbody>
+</table>
+</div>
+
+<div class="container">
+  <h3>Add a Song</h3>
+  <p><% flash.each do |key, value|  %>
+<div class="alert alert-<%= key %>" role="alert">
+  <p><%= value %> </p>
+</p>
+</div>
+<% end %>
+  <div class="col-4">
+    <form action="/songs" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="form-group">
+      <label for="branch">Title</label>
+          <input type="text" name="song[title]" class="form-control" placeholder="title">
+  </div>
+
+    <div class="form-group">
+      <label for="street">Artist</label>
+          <input type="text" name="song[artist]" class="form-control" placeholder="artist">
+    </div>
+  </div>
+<button type="submit">Add Song</button>
+</div>
+</form>
+</div>
+</div>

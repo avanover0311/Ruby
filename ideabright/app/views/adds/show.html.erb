@@ -1,0 +1,16 @@
+
+<div class="container">  
+	<div><%= @comment.content %></div>
+		<table class="table">
+			<% @users.each do |user| %>
+          
+            	<tr>
+                	<td><%= user.screen_name %></td>
+            		<td><%= user.name %></td>
+            	</tr>
+    		  <% end %>
+    		</thead>
+    	</table>
+	</div>
+</div>
+<a href="/comments">Dashboard</a>

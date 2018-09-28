@@ -1,0 +1,23 @@
+<h1><%= @user.first_name %>'s Playlist</h1>
+<div class="container">  
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Artist</th>
+      <th scope="col">Title</th>
+      <th scope="col">Times added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @adds.each do |s| %>
+    <tr>
+      <td><%= s.artist %></td>
+      <td><%= s.title %></td>
+      <td><td>
+
+    </tr> 
+    <% end %>    
+  </tbody>
+</table>
+</div>
+<a href="/songs">Dashboard</a>

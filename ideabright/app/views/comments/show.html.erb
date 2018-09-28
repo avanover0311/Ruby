@@ -1,0 +1,22 @@
+<a href="/comments">Dashboard</a>
+
+<div class="container">	
+	<h3>Other who liked:</h3>
+		<table class ="table">
+  			<thead>
+    			<tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">No. of times idea has been liked</th>
+    			</tr>
+  			</thead>
+  		<tbody>
+  		<% @otheruser.each do |s| %>
+    		<tr>
+      			<td><a href="/comments/<%= s.id %>"><%= s.name%></a></td>
+      			<td><%= Comment.where(user_id: s.id, comment_id: params[:id]).count %></td>
+  	 
+    		</tr> 
+    	<% end %>    
+  		</tbody>
+		</table>
+</div>

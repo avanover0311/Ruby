@@ -1,0 +1,21 @@
+<div class="container">  
+    <table class="table">
+		<thead>
+			<tr>
+		    	<th scope="col">Group</th>
+		    	<th scope="col">Description</th>
+		    	<th scope="col">Members!</th>
+		    </tr>
+		</thead>
+		<tbody>
+			<% @users_joined.each do |user| %>
+			    <tr>
+			    	<td><%= @group.name %></td>
+			    	<td><%= @group.description %>
+			    	<td><%= user.first_name %></td>			    	
+		    	</tr>
+		    <% end %>
+		</tbody>
+	</table>
+	<a href="/groups">Dashboard</a>
+</div>

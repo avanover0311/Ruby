@@ -1,0 +1,152 @@
+<h1>Welcome, <%= @user.first_name %> <%= @user.last_name %></h1>
+<a href="users/<%= @user.id %>">Edit my Profile</a>
+
+
+<div class="container">	
+  <h3>Here are some events in your state</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Host</th>
+      <th scope="col">Action/ Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @events.each do |s| %>
+    <tr>
+      <td><a href="events/<%= s.id %>"><%= s.name%></a></td>
+      <td><%= s.date %></td>
+      <td><%= s.location %></td>
+      <td><%= s.user.first_name %></td>
+  	  <td>
+        <% if @user.id == s.user_id %>
+          <a href="events/<%= s.id %>/edit">Edit</a>|
+          <a href="events/<%= s.id %>" data-method="delete">Delete</a>
+  		   
+          <% elsif s.attendees.include?(@user) %>
+  	       <a href="events/<%=s.id %>/cancel" data-method="delete">Cancel</a>
+          <% else %>
+          <a href="events/<%= s.id %>/join">Join</a>
+        <% end %>
+      </td>
+    </tr> 
+    <% end %>    
+  </tbody>
+</table>
+</div>
+
+<div class="container"> 
+  <h3>Here are events in other states</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Host</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @awayevents.each do |s| %>
+    <tr>
+      <td><a href="events/<%= s.id %>"><%= s.name %> </a></td>
+      <td><%= s.date %></td>
+      <td><%= s.location %></td>
+      <td><%= s.user.first_name %></td>
+      <td> <% if s.attendees.include?(@user) %>
+          <a href="events/<%=s.id %>/cancel" data-method="delete">Cancel</a>
+          <% else %>
+          <a href="events/<%= s.id %>/join">Join</a>
+        <% end %>
+        </td>
+      <% end %>   
+    </tr>    
+  </tbody>
+</table>
+</div>
+
+
+
+
+<div class="container">
+  <h3>Add an Event</h3>
+  <div class="col-4">
+    <form action="/events" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="form-group">
+      <label for="branch">Name</label>
+          <input type="text" name="event[name]" class="form-control" placeholder="name">
+  </div>
+
+    <div class="form-group">
+      <label for="street">Date</label>
+          <input type="date" name="event[date]" class="form-control" placeholder="Date">
+    </div>
+    <div class="form-group">
+      <label for="city">Location</label>
+          <input type="text" name="event[location]" class="form-control" placeholder="City Name">
+    </div>
+    <div>
+        <select class="form-control" id="state" name="event[state]">
+          <option value="AK">AK</option>
+          <option value="AL">AL</option>
+          <option value="AR">AR</option>
+          <option value="AZ">AZ</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DC">DC</option>
+          <option value="DE">DE</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="IA">IA</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="MA">MA</option>
+          <option value="MD">MD</option>
+          <option value="ME">ME</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MO">MO</option>
+          <option value="MS">MS</option>
+          <option value="MT">MT</option>
+          <option value="NC">NC</option>
+          <option value="ND">ND</option>
+          <option value="NE">NE</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NV">NV</option>
+          <option value="NY">NY</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="PR">PR</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VA">VA</option>
+          <option value="VT">VT</option>
+          <option value="WA">WA</option>
+          <option value="WI">WI</option>
+          <option value="WV">WV</option>
+          <option value="WY">WY</option>
+        </select>
+      </div>
+<button type="submit" value="create">Create</button>
+</div>
+</form>
+</div>

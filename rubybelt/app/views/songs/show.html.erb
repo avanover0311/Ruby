@@ -1,0 +1,22 @@
+<a href="/songs">Dashboard</a>
+
+<div class="container">	
+	<h3>Other who added:</h3>
+		<table class ="table">
+  			<thead>
+    			<tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">No. of times song has been added</th>
+    			</tr>
+  			</thead>
+  		<tbody>
+  		<% @otheruser.each do |s| %>
+    		<tr>
+      			<td><a href="/users/<%= s.id %>"><%= s.first_name%> <%= s.last_name %></a></td>
+      			<td><%= Play.where(user_id: s.id, song_id: params[:id]).count %></td>
+  	 
+    		</tr> 
+    	<% end %>    
+  		</tbody>
+		</table>
+</div>

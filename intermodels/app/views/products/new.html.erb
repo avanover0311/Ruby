@@ -1,0 +1,11 @@
+<div class="container">
+	<form action="/products" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<div class="form-group">
+    			<label for="name">Name</label>
+      				<input type="text" name="name" class="form-control" placeholder="name">
+ 			</div>
+ 			<button type="submit" value="create">Create</button>
+ 	</form>
+</div>
+<a href="/products">Go back</a>

@@ -1,0 +1,10 @@
+<h1>Editing <%= @products.name %></h1>
+
+<form action="/products/<%= @products.id %>" method = "post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="text" name="name" value="<%= @products.name %>">
+	<button type="submit">Update</button>
+</form>
+<a href="/products">Home</a>|
+<a href="/products/ <%= @products.id %>">Show</a>

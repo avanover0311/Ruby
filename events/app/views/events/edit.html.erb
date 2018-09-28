@@ -1,0 +1,14 @@
+<h1>Edit Event</h1>
+<div class="container">
+<form action="/events/<%= @event.id %>" method = "post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="text" name="name" value="<%= @event.name %>">
+	<input type="date" name="date" value="<%= @event.date %>">
+	<input type="text" name="location" value="<%= @event.location %>">
+	<input type="text" name="state" value="<%= @event.state %>">
+
+<button type="submit" value="Update">Update Event</button>
+</div>
+</form>
+<a href="/events">Events Dashboard</a>

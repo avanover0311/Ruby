@@ -1,0 +1,14 @@
+<h1><%= @user.name %>'s Profile</h1>
+<div class="container">  
+
+    <div>
+      <p><%= @user.screen_name %></p>
+      <p><%= @user.email %></p>
+    </div>
+    <div> Total Likes 
+    <% @comment.each do |a| %>
+    <%= Add.where(user_id: params[:id], comment: a).count %>
+    <% end %>
+    </div>
+</div>
+<a href="/comments">Dashboard</a>

@@ -1,0 +1,20 @@
+<div class="container">  
+    <table class="table">
+		<thead>
+			<tr>
+		    	<th scope="col">Idea</th>
+		    	<th scope="col">Screen Name</th>
+		    	<th scope="col"># of likes</th>
+		    </tr>
+		</thead>
+		<tbody>
+			<% @users_liked.each do |user| %>
+			    <tr>
+			    	<td><%= @comment.content %></td>
+			    	<td><%= user.screen_name %></td>			    	
+		    	</tr>
+		    <% end %>
+		</tbody>
+	</table>
+	<a href="/comments">Dashboard</a>
+</div>

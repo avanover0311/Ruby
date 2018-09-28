@@ -1,0 +1,57 @@
+<div class="container">	
+  <h3>Hi <%= @user.first_name %></h3>
+
+
+  
+        <p><% flash.each do |key, value|  %></p>
+          <div class="alert alert-<%= key %>" role="alert">
+            <p><%= value %> </p>
+          </div>
+          <% end %>
+    <div class="col-4">
+        <form action="/groups" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <div class="form-group">
+            <label for="branch">Org Name</label>
+              <input type="text" name="group[name]" class="form-control" placeholder="Org Name">
+          </div>
+          <div class="form-group">
+            <label for="branch">Description</label>
+              <input type="text" name="group[description]" class="form-control">
+          </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+ 
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Group Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Members</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+                   <% @group.each do |s| %>
+              <tr>
+                <td><a href="/joins/<%= s.id %>"><%= s.name %></a></td>
+                <td><%= s.description %></td>
+                <td><a href="/joins/<%= s.id %>"><%= s.joins.distinct.count %> Members </a></td>
+                <td>
+                    <form action="/joins/<%= s.id %>" method="post">
+                      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <button type ="submit">Join</button>
+                    </form>
+                </td>   
+                <td>
+                    <% if @user.id == s.user_id %>
+                  <a href="groups/<%= s.id %>" data-method="delete">Delete</a>
+                    <% end %>
+                </td>
+              </tr>
+                  <% end %>
+          </tbody>
+      </table>                
+</div>

@@ -1,0 +1,28 @@
+<h1>New Dojo</h1>
+
+
+<div class="container">
+		<form action="/dojos" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<div class="form-group">
+    	<label for="branch">Branch</label>
+      		<input type="text" name="branch" class="form-control" placeholder="Branch name">
+ 	</div>
+
+  	<div class="form-group">
+    	<label for="street">Street</label>
+      		<input type="text" name="street" class="form-control" placeholder="Street name">
+    </div>
+  	<div class="form-group">
+    	<label for="city">City</label>
+      		<input type="text" name="city" class="form-control" placeholder="City name">
+    </div>
+  	<div class="form-group">
+    	<label for="state">State</label>
+      		<input type="text" name="state" class="form-control" placeholder="State">
+    </div>
+
+<button type="submit" value="create">Create</button>
+</div>
+</form>
+<a href="/dojos">Go back</a>

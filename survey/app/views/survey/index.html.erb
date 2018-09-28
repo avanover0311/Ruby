@@ -1,0 +1,36 @@
+<h1>Dojo Survey</h1>
+<div class="container">
+<form action="/survey/" method = "post">
+      <input type="hidden" name="_method" value="survey">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Dojo Location</label>
+    <select class="form-control" id="location" name="location">
+      <option>Seattle</option>
+      <option>Mountain View</option>
+      <option>New York</option>
+      <option>Tulsa</option>
+      <option>Dallas</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect2">Favorite Langauge</label>
+    <select multiple class="form-control" id="language" name="language">
+      <option>Python</option>
+      <option>Javascript</option>
+      <option>Ruby</option>
+      <option>Mean</option>
+      <option>HTML/CSS</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Comments</label>
+    <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+</div>

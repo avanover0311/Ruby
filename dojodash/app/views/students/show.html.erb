@@ -1,0 +1,27 @@
+<h1><%= @dojo.branch %></h1><h1><%= @students.first_name %> <%= @students.last_name %></h1>
+<h2>Email: <%= @students.email %></h2>
+
+<div class="container">	
+	<h2>Cohort</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @cohort.each do |s| %>
+    <tr>
+      <td><%= s.first_name %></td>
+      <td><%= s.last_name %></td>
+      <td><%= s.email %></td>
+  	</tr>
+  	<% end %>
+  </tbody>
+</table>
+</div> 
+
+<a href="/dojos">Home</a>|
+<a href="/dojos/<%= @dojo.id %>/students/<%= @students.id %>/edit">Edit</a>

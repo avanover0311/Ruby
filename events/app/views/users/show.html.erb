@@ -1,0 +1,16 @@
+
+<h1>Editing Profile of <%= @user.first_name %></h1>
+<div class="container">
+<form action="/users/<%= @user.id %>" method = "post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="text" name="first_name" value="<%= @user.first_name %>">
+	<input type="text" name="last_name" value="<%= @user.last_name %>">
+	<input type="text" name="email" value="<%= @user.email %>">
+	<input type="text" name="location" value="<%= @user.location %>">
+	<input type="text" name="state" value="<%= @user.state %>">
+
+<button type="submit" value="Update">Update Records</button>
+</div>
+</form>
+<a href="/events">Events Dashboard</a>

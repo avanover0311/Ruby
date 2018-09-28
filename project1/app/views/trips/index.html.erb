@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="nav navbar-nav navbar right header">
+		<a href="#" style="color:#CC5E23"><%= @user.first_name %>'s Upcoming Trips</a>
+	</div>
+		<div class="jumbotron">
+			<h2>Fernweh Expeditions</h2>
+			<p>Craving places you've never been</p>
+		</div>
+			<h3>Upcoming Trips</h3>
+				<table class="table table-bordered" style="color:#111F3B">
+					<thead class="tripheader">
+				    	<tr>
+				      		<th scope="col">Date</th>
+				      		<th scope="col">Name</th>
+				      		<th scope="col">Location</th>
+				      		<th scope="col">Description</th>
+				      		<th scope="col"></th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				  		<% @trip.each do |s| %>
+				    	<tr>
+				      		<td><%= s.date %></td>
+				      		<td><%= s.name %></td>
+				      		<td><%= s.location %></td>
+				      		<td><%= s.description %></td>
+				      		<td>
+	                    		<form action="users/<%= s.id %>" method="post">
+	                    		  <input type="hidden" name="authenticity_token" value="<%= 		form_authenticity_token %>">
+	                    		      <button type ="submit">Join</button>
+	                    		</form>
+	                		</td>
+				    	</tr>
+				    	<% end %>
+				  	</tbody>
+				</table>
+
+</div>

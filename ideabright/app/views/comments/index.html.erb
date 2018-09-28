@@ -1,0 +1,49 @@
+<div class="container">	
+  <h3>Hi <%= @user.name %></h3>
+
+
+  <div class="container">
+      <p><% flash.each do |key, value|  %></p>
+        <div class="alert alert-<%= key %>" role="alert">
+          <p><%= value %> </p>
+        </div>
+        <% end %>
+  <div class="col-4">
+    <form action="/comments" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+        <label for="branch">New Idea</label>
+            <input type="text" name="comment[content]" class="form-control" placeholder="New Idea">
+    </div>
+        <button type="submit">Idea</button>
+    </form>
+  </div>
+  </div>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <% @comment.each do |s| %>
+          
+                <th scope="col"><a href="users/<%= s.id %>"><%= s.user.name %></a>
+                  <td> says <%= s.content %></td>
+                  <td><%= Add.where(comment: s).count %></td>
+                  <td><a href="adds/<%= s.id %>">People liked </a></td>
+                  <td>
+                    <form action="adds/<%= s.id %>" method="post">
+                      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <button type ="submit">Likes</button>
+      
+                  </td>
+
+                    <% if @user.id == s.user_id %>
+                  <td><a href="comments/<%= s.id %>" data-method="delete">Delete</a>
+
+                  </td>
+                  
+                    </form>       
+            </tr> 
+                    <% end %>
+              <% end %>
+</div>
+

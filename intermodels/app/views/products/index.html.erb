@@ -1,0 +1,26 @@
+<h1>Intergration Models</h1>
+<h2><%= @products.length %> Users</h2>
+<body>
+<div class="container">	
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |d| %>
+    <tr>
+      <td><%= d.name %></td>
+      <td><a href="/products/ <%= d.id %>">Show</a>
+          <a href="/products/ <%= d.id %>/edit">Edit</a>
+          <a href="">Delete</a>
+  </tbody>
+<% end %>
+</table>
+</div>
+ 
+<a href="/products/new">New</a>
+</body>
+</html>
+
